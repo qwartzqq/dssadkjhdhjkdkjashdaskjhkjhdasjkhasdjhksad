@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Anton&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Inter", sans-serif;
+
+  --color-pale-bg: #050505;
+  --color-pale-card: rgba(22, 28, 36, 0.4);
+  --color-pale-accent: #3393e0;
+  --color-pale-border: rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+  body {
+    @apply bg-pale-bg text-white font-sans antialiased selection:bg-pale-accent selection:text-white;
+    background-image: 
+      radial-gradient(circle at 20% 30%, rgba(88, 28, 135, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(20, 83, 45, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(30, 58, 138, 0.05) 0%, transparent 70%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-pale-card backdrop-blur-xl border border-pale-border rounded-3xl shadow-2xl;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    @apply border-white/20 bg-white/[0.05];
+  }
+
+  .btn-pill {
+    @apply rounded-full px-6 py-2 text-sm font-semibold transition-all active:scale-95 disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-white text-black hover:bg-white/90;
+  }
+
+  .btn-secondary {
+    @apply bg-white/5 text-white hover:bg-white/10 border border-white/10;
+  }
+
+  .input-pale {
+    @apply bg-transparent border-none outline-none px-4 py-3 text-base font-sans placeholder:text-white/20 w-full;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.grid-bg {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+  background-size: 40px 40px;
+}
